@@ -91,12 +91,27 @@ var upperCasedCharacters = [
 // Function to prompt user for password options
 function getPasswordOptions() {
   let passwordCriteria = {
-    pass_length: prompt("How long do you want your password to be?"),
-    lowercase: confirm("Would you like Lowercase characters in your password?"),
-    uppercase: confirm("Would you like Uppercase characters in your password?"),
-    numbers: confirm("Would you like numbers in your password?"),
-    special_char: confirm("Would you like special characters in your password?")
+    pass_length: 0,
+    lowercase: false,
+    uppercase: false,
+    numbers: false,
+    special_char: false,
   };
+  while(true){
+    passwordCriteria.pass_length = prompt("How long do you want your password to be?");
+    if (passwordCriteria.pass_length < 8 || passwordCriteria.pass_length > 128 ) {
+      alert('Out of bounds! Please enter a password length between 8 and 128')
+    }
+    else{
+      break;
+    }
+
+  }
+  passwordCriteria.lowercase = confirm("Would you like Lowercase characters in your password?")
+  passwordCriteria.uppercase = confirm("Would you like Uppercase characters in your password?")
+  passwordCriteria.numbers = confirm("Would you like numbers in your password?")
+  passwordCriteria.special_char = confirm("Would you like special characters in your password?")
+  
   return passwordCriteria;
 }
 let results = getPasswordOptions()
