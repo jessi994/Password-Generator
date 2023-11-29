@@ -138,6 +138,8 @@ function getRandom(arr) {
 function generatePassword() {
   let options = getPasswordOptions()
   var all_char = []
+  // Check if one of the password options has been selected by the user
+  // If so add the array containing the chosen charcter type to all_char
   if (options.lowercase){
     all_char += lowerCasedCharacters.join("");
   }
@@ -150,13 +152,15 @@ function generatePassword() {
   if (options.special_char){
     all_char += specialCharacters.join("");
   }
-  console.log(all_char)
   
+  /* Generate a random character from all_char and add to the 
+  encrypted_char array until the length of the password
+  set by the user is reached */
   let encrypted_char = []
   while(encrypted_char.length < options.pass_length){
     const charac = all_char[Math.floor(Math.random()*all_char.length)];
     encrypted_char.push(charac)
-    console.log(encrypted_char)
+   
   }
 
   return encrypted_char.join("")
@@ -174,5 +178,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-
 generateBtn.addEventListener('click', writePassword);
