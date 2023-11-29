@@ -19,11 +19,10 @@ This project is an application to generate a random password for an employee. Th
   * Once the prompts are answered, meeting the above criteria, the password should be generated and displayed written to the page
 
 ### Password-Generator Website view
-![Screenshot of Password-Generator Website view ](images/webpagecomputersize.png)
-
+![Screenshot of Password-Generator Website view ](./images/desktopviewpassword.png)
 
 ### Password-Generator mobile view
-![Screenshot of Password-Generator W mobile view](images/webpagephonesize.png)
+![Screenshot of Password-Generator mobile view](./images/mobileviewpassword.png)
 
 ### Link to deployed application
 Access the live application [here](https://jessi994.github.io/Password-Generator/)
