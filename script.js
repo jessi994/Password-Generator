@@ -109,11 +109,20 @@ function getPasswordOptions() {
       break;
     }
   }
-  // Set the rest of the password options given by the user
+  // Check at least one character type has been chosen 
+  while(true){
   passwordCriteria.lowercase = confirm("Would you like Lowercase characters in your password?")
   passwordCriteria.uppercase = confirm("Would you like Uppercase characters in your password?")
   passwordCriteria.numbers = confirm("Would you like numbers in your password?")
   passwordCriteria.special_char = confirm("Would you like special characters in your password?")
+  if (!passwordCriteria.lowercase && !passwordCriteria.uppercase && !passwordCriteria.numbers && !passwordCriteria.special_char){
+    alert('At least one character type needs to be selected')
+  }
+  // Once user has selected at least one special character type exit the while loop
+  else{
+    break;
+  }
+  }
   
   return passwordCriteria;
 }
@@ -130,25 +139,27 @@ function generatePassword() {
   let options = getPasswordOptions()
   var all_char = []
   if (options.lowercase){
-    all_char += lowerCasedCharacters
+    all_char += lowerCasedCharacters.join("");
   }
   if (options.uppercase){
-    all_char += upperCasedCharacters
+    all_char += upperCasedCharacters.join("");
   }
   if (options.numbers){
-    all_char += numericCharacters
+    all_char += numericCharacters.join("");
   }
   if (options.special_char){
-    all_char += specialCharacters
+    all_char += specialCharacters.join("");
   }
+  console.log(all_char)
   
-  let password = []
-  while(password.length < options.pass_length){
-    const char = all_char[Math.floor(Math.random()*all_char.length)];
-    password.push(char)
+  let encrypted_char = []
+  while(encrypted_char.length < options.pass_length){
+    const charac = all_char[Math.floor(Math.random()*all_char.length)];
+    encrypted_char.push(charac)
+    console.log(encrypted_char)
   }
 
-  return password
+  return encrypted_char.join("")
 }
 
 // Get references to the #generate element
